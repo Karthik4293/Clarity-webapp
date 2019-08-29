@@ -1,0 +1,132 @@
+<h3>
+   <strong><u>Find differing files</u></strong>
+</h3>
+<br>
+
+
+
+<form clr-form>
+  <div class="checkbox" clrCheckbox>
+    <div><h6>Search
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Select adjacent vSphere versions</h6>
+    </div>
+    <input clrInput placeholder="Enter a valid Regex" name="input" (keyup)=onkey($event) />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <!--
+    <clr-dropdown>
+        <button class="btn btn-outline-primary" clrDropdownTrigger>
+            From
+            <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <div class="dropdown-menu">
+            <div class="dropdown-item">
+                <input type="radio" clrRadio value="v67ga" name="from_options" />
+                <label> v67 GA </label>
+            </div>
+            <div class="dropdown-item">
+                <input type="radio" clrRadio value="v67u1" name="from_options" />
+                <label> v67 U1 </label>
+            </div>
+            <div class="dropdown-item">
+                <input type="radio" clrRadio value="v67u2" name="from_options" />
+                <label> v67 U2 </label>
+            </div>
+        </div>
+      </clr-dropdown>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <clr-dropdown>
+        <button class=" btn btn-outline-primary" clrDropdownTrigger>
+            To
+            <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <div class="dropdown-menu">
+            <div class="dropdown-item">
+                <input type="radio" clrRadio value="v67ga" name="to_options" />
+                <label> v67 GA </label>
+            </div>
+            <div class="dropdown-item">
+                <input type="radio" clrRadio value="v67u1" name="to_options" />
+                <label> v67 U1 </label>
+            </div>
+            <div class="dropdown-item">
+                <input type="radio" clrRadio value="v67u2" name="to_options" />
+                <label> v67 U2 </label>
+            </div>
+        </div>
+    </clr-dropdown>
+-->
+    <input type="checkbox" name="versions" id="0"  (change)="valid_cb($event)">
+    <label for="0">v6.7 GA</label>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="checkbox" name="versions" id="1"  (change)="valid_cb($event)">
+    <label for="1">v6.7 U1</label>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="checkbox" name="versions" id="2"  (change)="valid_cb($event)">
+    <label for="2">v6.7 U2</label>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="checkbox" name="versions" id="3"  (change)="valid_cb($event)">
+    <label for="3">v6.7 U3</label>
+  </div>
+
+</form>
+
+
+
+
+
+
+<br><br><br>
+<button class="btn btn-primary" (click)="onclk()">Find</button>
+<!--<button [clrLoading]="validateBtnState" class="btn btn-info-outline" (click)="validateDemo()">Validate</button>-->
+
+
+<br><br><br>
+
+<clr-datagrid>
+  <clr-dg-column>File name</clr-dg-column>
+  <clr-dg-column [clrDgField]="'lines_changed'" [clrDgSortOrder]="descSort">Lines Changed</clr-dg-column>
+  <clr-dg-column>Change Intensity</clr-dg-column>
+  <!--
+  <clr-dg-row *ngFor="let diff_file of diff_files">
+      <clr-dg-cell>{{diff_file.filename}}</clr-dg-cell>
+      <clr-dg-cell>{{diff_file.lines_changed}}</clr-dg-cell>
+      <clr-dg-cell>{{diff_file.change_intensity}}</clr-dg-cell>
+  </clr-dg-row> -->
+  <clr-dg-row *ngFor="let item of collection | paginate:{itemsPerPage: 20, currentPage:p}">
+    <clr-dg-cell>{{item.filename}}</clr-dg-cell>
+    <clr-dg-cell>{{item.lines_changed}}</clr-dg-cell>
+    <clr-dg-cell>{{item.change_intensity}}</clr-dg-cell>
+  </clr-dg-row>
+
+  <pagination-controls (pageChange)="p=$event"></pagination-controls>
+  <!--<clr-dg-footer>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{total}} files
+      <clr-dg-pagination #pagination [clrDgPageSize]="20"></clr-dg-pagination>
+  </clr-dg-footer> -->
+</clr-datagrid>
+
+<br><br><br><br><br>
+
+
+<!--
+<br>
+  <p>.......... work in progress ........</p>
+<br>
+
+<form class="clr-form">
+    <div class="clr-form-control">
+      <label for="example" class="clr-control-label">Label</label>
+      <div class="clr-control-container clr-error">
+        <div class="clr-input-wrapper">
+          <input type="text" id="filt" placeholder="Enter a regex" class="clr-input">
+          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        </div>
+        <span class="clr-subtext">invalid regex</span>
+      </div>
+    </div>
+  </form>
+-->

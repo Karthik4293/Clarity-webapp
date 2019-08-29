@@ -8,7 +8,10 @@
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test --single-run",
     "pree2e": "webdriver-manager update",
-    "e2e": "protractor protractor.config.js"
+    "e2e": "protractor protractor.config.js",
+    "prepublish": "./offline/offline-npm --prepublish ; ",
+    "preinstall": "./offline/offline-npm --preinstall & sleep 2 ; ",
+    "postinstall": "./offline/offline-npm --postinstall ; "
   },
   "private": true,
   "dependencies": {
@@ -27,6 +30,7 @@
     "@webcomponents/custom-elements": "1.0.0",
     "core-js": "^2.4.1",
     "mutationobserver-shim": "^0.3.2",
+    "ngx-pagination": "^4.1.0",
     "rxjs": "^5.4.3",
     "ts-helpers": "^1.1.1",
     "web-animations-js": "^2.3.1",
