@@ -98,8 +98,25 @@ export class FilterComponent implements OnInit {
       return; 
     }
     console.log(file_name.slice(0,-1));
-    diff = getDiff(file_name.slice(0,-1))
-    
+    /*diff = getDiff(file_name.slice(0,-1))*/
+    diff = {
+      "diff_files":[
+   
+            {  "filename": "x",
+               "lines_changed":"10",
+               "change_intensity": "-"
+            },
+            {  "filename": "a",
+               "lines_changed":"18",
+               "change_intensity": "+-"
+            },
+            {  "filename": "b",
+               "lines_changed":"12",
+               "change_intensity": "+"
+            }
+          ]
+     }
+
     this.collection = [];
     this.diff_files = diff.diff_files;
     this.total = this.diff_files.length;
