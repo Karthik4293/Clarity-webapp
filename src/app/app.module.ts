@@ -7,9 +7,6 @@ import { ClarityModule } from '@clr/angular';
 import { AppComponent } from './app.component';
 import { ROUTING } from "./app.routing";
 import { HomeComponent } from "./home/home.component";
-import { AboutComponent } from "./about/about.component";
-import { OpenGrokComponent } from './open-grok/open-grok.component';
-import { AnalyzeComponent } from './analyze/analyze.component';
 import { FilterComponent } from './filter/filter.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 
@@ -18,10 +15,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 @NgModule({
     declarations: [
         AppComponent,
-        AboutComponent,
         HomeComponent,
-        OpenGrokComponent,
-        AnalyzeComponent,
         FilterComponent,
     ],
     imports: [
