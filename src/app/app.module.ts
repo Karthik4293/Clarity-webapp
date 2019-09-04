@@ -6,7 +6,6 @@ import { HttpModule } from '@angular/http';
 import { ClarityModule } from '@clr/angular';
 import { AppComponent } from './app.component';
 import { ROUTING } from "./app.routing";
-import { HomeComponent } from "./home/home.component";
 import { FilterComponent } from './filter/filter.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 

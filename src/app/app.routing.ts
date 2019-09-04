@@ -6,7 +6,6 @@
 import { ModuleWithProviders } from '@angular/core/src/metadata/ng_module';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from "./home/home.component";
 import { FilterComponent } from './filter/filter.component';
 
 
