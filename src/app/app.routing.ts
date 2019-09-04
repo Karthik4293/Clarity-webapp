@@ -11,9 +11,8 @@ import { FilterComponent } from './filter/filter.component';
 
 
 export const ROUTES: Routes = [
-    {path: '', redirectTo: 'home', pathMatch: 'full'},
-    {path: 'home', component: HomeComponent},
-    {path: 'filter', component: FilterComponent},
+    {path: '', redirectTo: 'filter', pathMatch: 'full'},
+    {path: 'filter', component: FilterComponent}
 ];
 
 export const ROUTING: ModuleWithProviders = RouterModule.forRoot(ROUTES);
